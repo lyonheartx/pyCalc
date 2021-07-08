@@ -3,7 +3,7 @@ import tkinter
 from utils import math
 
 root = tkinter.Tk()
-root.title("Dez wasn't fucking bitches in Portland")
+root.title("Dez wasn't fucking bitches")
 
 expression = ""
 
