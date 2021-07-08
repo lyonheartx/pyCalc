@@ -1,32 +1,41 @@
 import tkinter
+##from PyCalc.utils import Math
+from utils import math
 
 root = tkinter.Tk()
-root.title("Shae's a bitch")
+root.title("Dez wasn't fucking bitches in Portland")
 
 expression = ""
+
+m = math.Math()
+##m.calculate("test")
 
 # functions
 def add(value):
     global expression
     expression += value
     label_result.config(text=expression)
-    
+
+
 def clear():
     global expression
     expression = ""
     label_result.config(text=expression)
-    
+
+
 def calculate():
     global expression
     result = ""
     if expression != "":
         try:
+            # TODO replace with new class creation
             result = eval(expression)
         except:
             result = "You fucked up"
             expression = ""
     label_result.config(text=result)
     expression = str(result)
+
 
 def key_handler(event):
     global expression
@@ -45,18 +54,18 @@ def key_handler(event):
     elif event.keysym == "period":
         add(".")
     elif event.keysym in ("Return", "equal"):
-        calculate()
+        #calculate()
+        m.calculate(expression)
     elif event.keysym == "BackSpace":
-        expression = expression[0:len(expression)-1]
+        expression = expression[0:len(expression) - 1]
         label_result.config(text=expression)
-        
-    
+
+
 root.bind("<Key>", key_handler)
 
-#Frame
+# Frame
 label_result = tkinter.Label(root, text="", width=16, height=1, background="spring green")
 label_result.grid(row=0, column=0, columnspan=4)
-
 
 pressme_1 = tkinter.Button(root, text="1", command=lambda: add("1"))
 pressme_1.grid(row=1, column=0)
@@ -95,7 +104,7 @@ pressme_clear = tkinter.Button(root, text="C", command=lambda: clear())
 pressme_clear.grid(row=4, column=0)
 
 pressme_divide = tkinter.Button(root, text="/", command=lambda: add("/"))
-pressme_divide.grid(row=1, column=3)  
+pressme_divide.grid(row=1, column=3)
 
 pressme_dot = tkinter.Button(root, text=".", command=lambda: add("."))
 pressme_dot.grid(row=4, column=2)
@@ -103,7 +112,7 @@ pressme_dot.grid(row=4, column=2)
 pressme_add = tkinter.Button(root, text="+", command=lambda: add("+"))
 pressme_add.grid(row=4, column=3)
 
-pressme_equals = tkinter.Button(root, text="=", width=16, command=lambda: calculate())
+pressme_equals = tkinter.Button(root, text="=", width=16, command=lambda: m.calculate())
 pressme_equals.grid(row=5, column=0, columnspan=4)
 
 pressme_subtract = tkinter.Button(root, text="-", command=lambda: add("-"))
