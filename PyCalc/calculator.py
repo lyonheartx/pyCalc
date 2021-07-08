@@ -55,7 +55,7 @@ def key_handler(event):
         add(".")
     elif event.keysym in ("Return", "equal"):
         #calculate()
-        m.calculate(expression)
+        m.calculate()
     elif event.keysym == "BackSpace":
         expression = expression[0:len(expression) - 1]
         label_result.config(text=expression)
