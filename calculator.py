@@ -54,8 +54,9 @@ def key_handler(event):
 root.bind("<Key>", key_handler)
 
 #Frame
-label_result = tkinter.Label(root, text="")
+label_result = tkinter.Label(root, text="", width=16, height=1, background="spring green")
 label_result.grid(row=0, column=0, columnspan=4)
+
 
 pressme_1 = tkinter.Button(root, text="1", command=lambda: add("1"))
 pressme_1.grid(row=1, column=0)
